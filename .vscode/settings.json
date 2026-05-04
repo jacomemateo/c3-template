@@ -3,7 +3,6 @@
   "c3lspclient.lsp.path": "c3-lsp",
   "c3lspclient.lsp.c3.path": "/nix/store/127zigfkp6y8kd68dlin6pzcych7sfmy-c3c-0.7.11/bin/c3c",
   "c3lspclient.lsp.c3.stdlibPath": "/Users/mateo/Code/Personal/c3/.c3_lib",
-
   "files.exclude": {
     "**/.git": true,
     "**/.direnv": true,
@@ -13,5 +12,7 @@
     "**/flake.lock": true,
     "**/c3lsp.json": true,
     "**/.envrc": true
-  }
+  },
+  "lldb.executable": "/usr/bin/lldb",
+  "lldb.library": "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB"
 }

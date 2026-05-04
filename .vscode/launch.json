@@ -5,12 +5,10 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug C3",
-            // This points to the binary produced by your 'debug' target
             "program": "${workspaceFolder}/bin/debug", 
             "args": [],
             "cwd": "${workspaceFolder}",
-            // This ensures the code is built before the debugger starts
-            "preLaunchTask": "C3: Run Debug" 
+            "preLaunchTask": "C3: Build Debug" // <--- MUST MATCH THE TASK LABEL
         }
     ]
 }

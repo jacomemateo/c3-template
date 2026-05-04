@@ -16,19 +16,31 @@
           buildInputs = [
             pkgs.c3c
             pkgs.c3-lsp
-            pkgs.lldb
             pkgs.jq 
           ];
 
           shellHook = ''
             # 1. Link DIRECTLY to the 'std' folder 
-            # This bypasses the LSP bug where it fails to resolve the 'std/' prefix
             ln -sfn ${pkgs.c3c}/lib/c3/std ./.c3_lib
 
+            # 2. Path Discovery
             ABS_PATH=$(pwd)/.c3_lib
             C3C_BIN=$(which c3c)
+            
+            # Use /usr/bin/xcode-select explicitly to bypass Nix-provided SDKs
+            REAL_XCODE_DIR=$(/usr/bin/xcode-select -p)
+            
+            # Prioritize standard system locations to avoid the Nix Store SDK bug
+            if [ -f "/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB" ]; then
+                LLDB_LIB="/Library/Developer/CommandLineTools/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB"
+            elif [ -f "/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB" ]; then
+                LLDB_LIB="/Applications/Xcode.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB"
+            else
+                # Fallback to whatever xcode-select says, but verify it's not a Nix path
+                LLDB_LIB="$REAL_XCODE_DIR/Library/PrivateFrameworks/LLDB.framework/Versions/A/LLDB"
+            fi
 
-            # 2. Update c3lsp.json with absolute paths (No trailing slashes!)
+            # 3. Generate/Update c3lsp.json
             cat <<EOF > c3lsp.json
 {
     "c3c_path": "$C3C_BIN",
@@ -37,35 +49,26 @@
 }
 EOF
 
-            # 3. Comment-Safe VS Code Settings Update
+            # 4. Comment-Safe VS Code Settings Update
             mkdir -p .vscode
             if [ -f .vscode/settings.json ]; then
-                # Strip comments with sed so jq doesn't choke
                 tmp_json=$(mktemp)
                 tmp_settings=$(mktemp)
                 
-                # Remove // and /* */ style comments
+                # Strip comments for jq
                 sed 's|//.*||g' .vscode/settings.json | sed 's|/\*.*\*/||g' > "$tmp_json"
                 
                 jq ". + {
                     \"c3lspclient.lsp.c3.stdlibPath\": \"$ABS_PATH\",
-                    \"c3lspclient.lsp.c3.path\": \"$C3C_BIN\"
+                    \"c3lspclient.lsp.c3.path\": \"$C3C_BIN\",
+                    \"lldb.library\": \"$LLDB_LIB\"
                 }" "$tmp_json" > "$tmp_settings" && mv "$tmp_settings" .vscode/settings.json
                 
                 rm "$tmp_json"
-            else
-                cat <<EOF > .vscode/settings.json
-{
-    "c3lspclient.lsp.enable": true,
-    "c3lspclient.lsp.path": "c3-lsp",
-    "c3lspclient.lsp.c3.path": "$C3C_BIN",
-    "c3lspclient.lsp.c3.stdlibPath": "$ABS_PATH"
-}
-EOF
             fi
 
-            echo "🛡️  C3 Dev Shell: Symlinks and VS Code settings synchronized."
-            echo "📍 Stdlib mapped to: $ABS_PATH"
+            echo "🛡️  Environment Synchronized."
+            echo "✅ Using SYSTEM Debugger: $LLDB_LIB"
           '';
         };
       });

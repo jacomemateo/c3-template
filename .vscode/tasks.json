@@ -2,12 +2,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C3: Run Debug",
+            "label": "C3: Build Debug", // Renamed for clarity
             "type": "shell",
             "command": "c3c",
-            "args": ["run", "debug"],
+            "args": ["build", "debug"], // <--- CHANGED FROM 'run' TO 'build'
             "group": {
-                "kind": "build", 
+                "kind": "build",
                 "isDefault": true
             }
         },
@@ -17,6 +17,6 @@
             "command": "c3c",
             "args": ["build", "release"],
             "group": "build"
-        },
+        }
     ]
 }

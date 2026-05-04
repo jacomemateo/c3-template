@@ -23,7 +23,7 @@ fn int sum_array(int[] nums)
     
     // LOGIC BUG: This loop stops one element too early.
     // Use the debugger to watch the value of 'i' and 'sum'.
-    for (int i = 0; i < nums.len; i++) 
+    for (int i = 0; i < nums.len-1; i++) 
     {
         sum += nums[i];
     }
