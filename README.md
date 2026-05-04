@@ -17,7 +17,7 @@ A professional, reproducible development environment for the C3 programming lang
   - C3 Language Support
   - CodeLLDB
   - direnv
-  - **Custom LSP Client**: This project requires a custom VS Code extension to bridge the communication with the c3-lsp server. 🔒 Privacy Note: The provided .vsix in the extensions/ folder is pre-packaged for convenience. If you prefer to build it yourself from source, you can find the repository here: pherrymason/c3-lsp/client/vscode.
+  - **Custom LSP Client**: This project requires a custom VS Code extension to bridge the communication with the c3-lsp server. 🔒 Privacy Note: The provided .vsix in the extensions/ folder is pre-packaged for convenience. If you prefer to build it yourself from source, you can find the repository here: [github.com/pherrymason/c3-lsp/client/vscode](https://github.com/pherrymason/c3-lsp/tree/main/client/vscode).
 
 ## 📥 Getting Started
 
