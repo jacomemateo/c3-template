@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "c3.vscode-c3",
+    "vadimcn.vscode-lldb",
+    "mkhl.direnv"
+  ]
+}
