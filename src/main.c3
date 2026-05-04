@@ -1,32 +1,20 @@
 import std::io;
 
-/**
- * Goal: Sum up all numbers in the array.
- * Expected result for {1, 2, 3, 4}: 10
- */
-fn void main()
-{
-    int[] my_nums = {1, 2, 3, 4};
-    int total = sum_array(my_nums);
-	io::printfn("Hello chud %d", 2);
-    
-    io::printfn("Total sum: %d", total);
-    
-    if (total != 10) {
-        io::printn("--- BUG DETECTED: The sum should be 10! ---");
-    }
-}
+fn int main() {
+    int? n_opt = io::treadline().to_int();
 
-fn int sum_array(int[] nums)
-{
-    int sum = 0;
-    
-    // LOGIC BUG: This loop stops one element too early.
-    // Use the debugger to watch the value of 'i' and 'sum'.
-    for (int i = 0; i < nums.len-1; i++) 
-    {
-        sum += nums[i];
+    if (catch err = n_opt) {
+        io::eprintn("Invalid number");
+        return 1;
     }
-    
-    return sum;
+
+    int n = n_opt; // auto-unwrapped after catch
+
+    while (n != 1) {
+        n = (n % 2 == 0) ? n / 2 : n * 3 + 1;
+        io::printf("%d ", n);
+    }
+
+    io::printn();
+    return 0;
 }
