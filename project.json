@@ -1,0 +1,29 @@
+{
+  "$schema": "./project_schema.json",
+  "version": "0.1.0",
+  "authors": ["Mateo <jacome.mateo@icloud.com>"],
+  "langrev": "0.7.11",
+  
+  "sources": ["src/main.c3"],
+  "output": "bin",
+
+  "targets": {
+    "main": {
+      "type": "executable"
+    },
+    "debug": {
+      "type": "executable",
+      "safe": true,
+      "opt": "O0",
+      "debug-info": "full",
+      "trap-on-wrap": true
+    },
+    "release": {
+      "type": "executable",
+      "safe": false,
+      "opt": "O3",
+      "strip-unused": true,
+      "single-module": true
+    }
+  }
+}

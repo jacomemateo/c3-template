@@ -1,0 +1,8 @@
+# C3 Build Artifacts
+bin/
+build/
+out/
+*.dSYM/
+
+# VS Code specific
+.vscode/
