@@ -2,21 +2,35 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C3: Build Debug", // Renamed for clarity
+            "label": "C3: Run",
             "type": "shell",
             "command": "c3c",
-            "args": ["build", "debug"], // <--- CHANGED FROM 'run' TO 'build'
+            "args": ["run"],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "C3: Build Debug",
+            "type": "shell",
+            "command": "c3c",
+            "args": ["build", "debug"],
+            "group": "build",
+            "problemMatcher": []
         },
         {
             "label": "C3: Build Release",
             "type": "shell",
             "command": "c3c",
             "args": ["build", "release"],
-            "group": "build"
+            "group": "build",
+            "problemMatcher": []
         },
         {
             "label": "C3: Clean Workspace",
