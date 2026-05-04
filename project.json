@@ -1,5 +1,5 @@
 {
-  "$schema": "./project_schema.json",
+  "$schema": "https://raw.githubusercontent.com/c3lang/c3c/master/resources/project_schema.json",
   "version": "0.1.0",
   "authors": ["Mateo <jacome.mateo@icloud.com>"],
   "langrev": "0.7.11",

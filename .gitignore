@@ -1,12 +1,17 @@
-# C3 Build Artifacts
+# C3 Artifacts
 bin/
 build/
-out/
-*.dSYM/
 .c3_lib
+c3lsp.json
 
-# VS Code specific
-.vscode/
+# Environment
+.direnv/
+.envrc
 
-# Direnv directories
-.direnv
+# macOS
+.DS_Store
+*.dSYM/
+
+# VS Code (Keep the settings, hide the rest if you want)
+.vscode/ipch/
+.vscode/extensions.json

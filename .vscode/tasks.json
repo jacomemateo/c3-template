@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "C3: Run Debug",
+            "type": "shell",
+            "command": "c3c",
+            "args": ["run", "debug"],
+            "group": {
+                "kind": "build", 
+                "isDefault": true
+            }
+        },
+        {
+            "label": "C3: Build Release",
+            "type": "shell",
+            "command": "c3c",
+            "args": ["build", "release"],
+            "group": "build"
+        },
+    ]
+}

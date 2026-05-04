@@ -1,0 +1,17 @@
+{
+  "c3lspclient.lsp.enable": true,
+  "c3lspclient.lsp.path": "c3-lsp",
+  "c3lspclient.lsp.c3.path": "/nix/store/127zigfkp6y8kd68dlin6pzcych7sfmy-c3c-0.7.11/bin/c3c",
+  "c3lspclient.lsp.c3.stdlibPath": "/Users/mateo/Code/Personal/c3/.c3_lib",
+
+  "files.exclude": {
+    "**/.git": true,
+    "**/.direnv": true,
+    "**/.c3_lib": true,
+    "**/bin": true,
+    "**/build": true,
+    "**/flake.lock": true,
+    "**/c3lsp.json": true,
+    "**/.envrc": true
+  }
+}
