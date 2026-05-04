@@ -3,6 +3,10 @@ bin/
 build/
 out/
 *.dSYM/
+.c3_lib
 
 # VS Code specific
 .vscode/
+
+# Direnv directories
+.direnv

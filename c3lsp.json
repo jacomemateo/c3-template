@@ -1,5 +1,5 @@
 {
-	"c3c_path": "/etc/profiles/per-user/mateo/bin/c3c",
-	"stdlib_path": "/nix/store/127zigfkp6y8kd68dlin6pzcych7sfmy-c3c-0.7.11/lib/c3/std",
-	"diagnostics_delay": 500
+    "c3c_path": "/nix/store/127zigfkp6y8kd68dlin6pzcych7sfmy-c3c-0.7.11/bin/c3c",
+    "stdlib_path": "/Users/mateo/Code/Personal/c3/.c3_lib",
+    "diagnostics_delay": 500
 }

@@ -8,6 +8,7 @@ fn void main()
 {
     int[] my_nums = {1, 2, 3, 4};
     int total = sum_array(my_nums);
+	io::printfn("Hello chud %d", 2);
     
     io::printfn("Total sum: %d", total);
     
